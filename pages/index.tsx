@@ -6,9 +6,14 @@ export default function Home() {
   useEffect(() => {
     const init = 1;
     setCount(init + count);
-  });
+  }, []);
 
-  const increaseScore = () => setCount(1);
+  // passing a empty array to useEffect means that the effect will only by called once
+  // this will make that the useEffect will stop be called infinitely and increase the count
+  // additionally count have to be set with the previous count value to avoid on of the 
+  // react common mistakes
+
+  const increaseScore = () => setCount(prev => prev + 1);
 
   return (
     <div>
